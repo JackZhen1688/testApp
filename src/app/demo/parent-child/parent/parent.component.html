@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-sm-12"><p>Parent works!</p></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1">
+                <input matInput placeholder="parent" formControlName="txtParent">
+            </div>
+            <div class="col-sm-2">
+                <button type="button" (click)="passDataToChild();">Pass Data to Child</button>
+            </div>
+            <div class="col-sm-3">
+                <button type="button" (click)="appChild.passDataToParent();">Trigger Child Method</button>
+            </div>
+            <div class="col-sm-4">
+                <mat-slide-toggle matTooltip="Set slider to View/Edit mode" formControlName="txtEdit" [checked]="checked" (change)="onToggleEdit($event)">Edit</mat-slide-toggle>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-4">
+                isEditabled from EditSlider:<span style="color: red;">&nbsp;{{isEditable}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-4">
+                <button type="button" (click)="setEditToggle();">reSetEditToggle</button>
+            </div>
+        </div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>Data pass from Child: {{childData}}</div>
+        <div>&nbsp;</div>
+        <div><hr></div>
+        <div class="row">
+            <div class="col-sm-4"><!-- Children Selector -->
+                <app-child [parentData]   = "parentData"    
+                           [isEditable]   = "isEditable" 
+                           (newDataEvent) = "getDataFromChild($event)" #appChild>
+                </app-child>
+            </div>
+            <div class="col-sm-8">&nbsp;</div>
+        </div>
+    </form>
+</div>

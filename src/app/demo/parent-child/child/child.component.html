@@ -1,0 +1,18 @@
+    <form [formGroup]="childForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-sm-12"><p>Child works!</p></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <input matInput placeholder="children" formControlName="txtChild">
+            </div>
+            <div class="col-sm-4">
+                <button type="button" (click)="passDataToParent();">Pass Data to Parent</button>
+            </div>
+            <div class="col-sm-5">&nbsp;</div>
+        </div>
+        <div>&nbsp;</div>
+        <div>Data pass from Parent: {{parentData}}</div>
+        <div>&nbsp;</div>
+    </form>
+

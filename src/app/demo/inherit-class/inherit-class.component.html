@@ -1,0 +1,20 @@
+<form [formGroup]="inheritForm">
+    <div class="container-fluid">
+      <p>&nbsp;</p>
+      <div class="row">
+        <div class="col-6">
+        </div>
+        <div class="col-3">
+          <mat-slide-toggle [checked]="checked" (change)="onToggleChange($event);">Edit</mat-slide-toggle>
+        </div>
+        <div class="col-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-6">Test Field:
+          <input matInput formControlName="txtTest" [readonly]="!isEditable" >
+        </div>
+        <div class="col-3"></div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+</form>

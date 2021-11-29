@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="alert alert-danger">
+          <div class="row">
+            <div class="col-sm-1">
+               
+            </div>
+            <div class="col-sm-11 small">
+                <p style="white-space: pre-wrap;">{{data.message}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="data.indecator == null ">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <div mat-dialog-actions>
+          <button mat-raised-button [mat-dialog-close]="1">Yes</button>
+        </div>
+      </div>
+      <div class="col-sm-3 text-right">
+        <div mat-dialog-actions>
+          <button mat-raised-button [mat-dialog-close]="0">No</button>
+        </div>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+    <div class="row" *ngIf="data.indecator == 'Save'">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3">
+        <div mat-dialog-actions>
+          <button mat-raised-button [mat-dialog-close]="1">Save</button>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div mat-dialog-actions>
+          <button mat-raised-button [mat-dialog-close]="2">Continue</button>
+        </div>
+      </div>
+      <div class="col-sm-3 text-right">
+        <div mat-dialog-actions>
+          <button mat-raised-button [mat-dialog-close]="0">Cancel</button>
+        </div>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+  </div>

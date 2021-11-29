@@ -1,0 +1,26 @@
+.mat-tab-group {
+    margin-bottom: 48px;
+  }
+  ::ng-deep .mat-tab-label-active {
+    background-color: #0b7f66!important;
+    opacity: 1!important;
+    color: white;
+}
+
+.matfield-outline {
+  font-size: 14px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  height: 25px;
+  padding-top: 1px;
+  padding-left: 3px;
+  padding-bottom: 1px;
+  width:100%;
+}
+
+table td
+{
+  width:500px;
+}
+
+

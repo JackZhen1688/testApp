@@ -1,0 +1,111 @@
+<div class="container">
+  <form [formGroup]="testForm">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <p>isShowTrainingBilling=={{isShowTrainingBilling}}</p>
+          <p>&nbsp;</p>
+          <mat-tab-group mat-align-tabs="start" class="cust-tab-col">
+              <mat-tab label="First">Content 1</mat-tab>
+              <mat-tab label="Second">Content 2</mat-tab>
+              <mat-tab label="Third">Content 3</mat-tab>
+            </mat-tab-group>
+        </div>>
+        <div class="col-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-4">
+          <mat-form-field class="full-width no-underline">
+            <div class="matfield-outline">
+              <input matInput formControlName="name">
+            </div>
+          </mat-form-field>  
+          <div>&nbsp;</div>
+        </div>
+        <div class="col-4">
+          <mat-form-field class="full-width no-underline">
+            <div class="matfield-outline">
+              <input matInput formControlName="amount">
+            </div>
+          </mat-form-field>  
+          <div>&nbsp;</div>
+        </div>
+        <div class="col-2"></div>
+      </div>  
+      <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8"> 
+
+            <div formArrayName="COMPs">
+              <table style="width:100%;" aria-describedby="">
+                      <tr>
+                        <th scope="col" style="width: 16%; font-size: 13px; font-weight: bold;height:30px;">Stratified&nbsp;Amount</th>
+                        <th scope="col">&nbsp;</th>
+                        <th scope="col" style="width: 16%; font-size: 13px; font-weight: bold;">Funded&nbsp;Amount</th>
+                        <th scope="col">&nbsp;</th>
+                        <th scope="col" style="width: 16%; font-size: 13px; font-weight: bold;">Obligated&nbsp;Amount</th>
+                        <th scope="col">&nbsp;</th>
+                        <th scope="col" style="width: 16%; font-size: 13px; font-weight: bold;">Paid&nbsp;Amount</th>
+                        <th scope="col">&nbsp;</th>
+                        <th scope="col" style="width: 16%; font-size: 13px; font-weight: bold;">Fiscal&nbsp;Year</th>
+                        <th scope="col">&nbsp;</th>
+                        <th scope="col" style="width: 16%; font-size: 13px; font-weight: bold;">Collection&nbsp;Account</th>
+                      </tr>
+                      <tr *ngFor="let comp of COMPs.controls; let i=index" formGroupName="{{i}}">
+                        <td style="width: 16%;">
+                          <div class="matfield-outline">
+                            <input matInput formControlName="txtStratifiedAm">
+                          </div>
+                        </td>
+                        <td></td>
+                        <td>
+                          <div class="matfield-outline">
+                            <input matInput formControlName="txtFundedAm">
+                          </div>
+                        </td>
+                        <td></td>
+                        <td>
+                          <div class="matfield-outline">
+                            <input matInput formControlName="txtObligatedAm">
+                          </div>
+                        </td>
+                        <td></td>
+                        <td>
+                          <div class="matfield-outline">
+                            <input matInput formControlName="txtPaidAm">
+                          </div>
+                        </td>
+                        <td></td>
+                        <td>
+                          <div class="matfield-outline">
+                            <input matInput formControlName="txtBillFY">
+                          </div>
+                        </td>
+                        <td></td>
+                        <td>
+                          <div class="matfield-outline">
+                            <input matInput formControlName="txtCollectAcctNm">
+                          </div>
+                        </td>
+                      </tr>
+                </table>  
+              </div>            
+          </div>
+
+          <div class="col-2"></div>
+      </div>  
+      <p>&nbsp;</p>
+      <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8"> 
+            111
+          </div>
+          <div class="col-2"></div>    
+      </div>
+  </form>
+</div>
+
+
+  
+  
