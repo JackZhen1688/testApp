@@ -27,6 +27,7 @@ export class InheritClassComponent extends EditSliderComponent implements OnInit
 
   ngOnInit(): void {
     this.onEditChange();
+    //this.asyncMethod();
   }
 
   onEditChange() {
@@ -48,6 +49,7 @@ export class InheritClassComponent extends EditSliderComponent implements OnInit
       }
     });
   }
+
   checkFromChanges(){
     if (this.inheritForm.dirty) {
         console.log("checkFromChanges....");
@@ -97,5 +99,13 @@ export class InheritClassComponent extends EditSliderComponent implements OnInit
     console.log("after this.resut=="+this.result);
   }
 
+  onSubmit() {
+    console.log("form values=="+JSON.stringify(this.inheritForm.value));
+  }
 
+  onBlur(event){
+    if(event.target.value !== '')
+     event.target.value = parseFloat(event.target.value).toFixed(2)
+  }
+  
 }

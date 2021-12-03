@@ -19,7 +19,7 @@ import { ShareService } from './services/share.service';
 import { EditSliderComponent } from './demo/inherit-class/edit-slider';
 import { InheritClassComponent } from './demo/inherit-class/inherit-class.component';
 import { DialogMessageYesnoComponent } from './utilitis/dialog-message-yesno/dialog-message-yesno.component';
-
+import { NgxMaskModule } from 'ngx-mask';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +43,8 @@ import { DialogMessageYesnoComponent } from './utilitis/dialog-message-yesno/dia
     MatInputModule,
     MatDialogModule,
     MatSlideToggleModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [ShareService],
   bootstrap: [AppComponent]

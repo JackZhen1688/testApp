@@ -38,6 +38,9 @@ export class TestComponent implements OnInit {
     this.breakLoop();
     this.patchData(this.data);
 
+    const obj = { a: 1 };
+    const copy = Object.assign({}, obj);
+    console.log(JSON.stringify(copy));
   }
 
   constructTestForm() {

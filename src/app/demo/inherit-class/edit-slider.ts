@@ -43,6 +43,7 @@ export class EditSliderComponent {
         dialogRef.close();
       }, timeout)
     })
+    return 123;
   }
-
+  
 }
