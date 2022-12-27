@@ -1,0 +1,124 @@
+<div class="container"> 
+  <form [formGroup]="panelForm" (ngSubmit)="onSubmit()">
+  <p>&nbsp;</p>   
+  <div class="row">  
+    <div class="col-2"></div>  
+    <div class="col-8">
+        <!--
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header (click) = test(); [collapsedHeight]="'60px'">
+                <mat-panel-title>
+                  Panel 11111
+                </mat-panel-title>
+                <mat-panel-description>
+                  Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>I'm visible because I am open</p>
+              <p>
+                <mat-form-field style="width:90%;" appearance="outline">
+                  <input 
+                      matInput 
+                      matTooltipClass="mat-tooltip-style"
+                      placeholder="Nick Name"
+                      id="txtCASE_NICKNAME_NM" 
+                      name="txtCASE_NICKNAME_NM"
+                      [(ngModel)]="caseInfoData['case_NICKNAME_NM']" 
+                      autocomplete="off"
+                      maxlength="50" 
+                      (change)="setChangedCM()"
+                      [matTooltip]="tttCaseNicknameNm"
+                  >
+                </mat-form-field>
+              </p>           
+            </mat-expansion-panel>
+        </mat-accordion>
+        -->
+    
+        <div class="example-action-buttons">
+          <button mat-button (click)="accordion.openAll()">Expand All</button>
+          <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+          <button (click)="closePanel();">Close Panel 2</button>
+        </div>
+        <mat-accordion class="example-headers-align" multi>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Personal data
+              </mat-panel-title>
+              <mat-panel-description>
+                Type your name and age
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+        
+            <mat-form-field appearance="fill">
+              <mat-label>First name</mat-label>
+              <input matInput formControlName="txtTest1">
+            </mat-form-field>
+        
+            <mat-form-field appearance="fill">
+              <mat-label>Age</mat-label>
+              <input matInput type="number" min="1">
+            </mat-form-field>
+
+            <P>{{caseHeaderData.test1}}</P>
+            <button (click)="changeData();">Click me</button>
+          </mat-expansion-panel>
+        
+          <mat-expansion-panel  [expanded]="panel2Expand">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Day of the trip
+              </mat-panel-title>
+              <mat-panel-description>
+                Inform the date you wish to travel
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+        
+            <mat-form-field appearance="fill">
+              <mat-label>Date</mat-label>
+              <input matInput formControlName="txtTest2">
+            </mat-form-field>
+
+            <P>{{caseHeaderData.test2}}</P>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </div>  
+    <div class="col-2"></div>  
+  </div>
+  <p>&nbsp;</p>
+  <button type="submit">Submit</button>
+
+  </form>
+</div>  
+
+<button (click)="toggle()">{{buttonName}}</button>
+<ng-container *ngIf="show" id="1">
+  <div style="margin: 0 auto;text-align: left;">
+    <p>&nbsp;</p>
+   <h2>111111</h2>
+  </div>
+</ng-container>
+
+<p>&nbsp;</p>
+<button mat-button [matMenuTriggerFor]="main_menu">My menu</button>
+
+<mat-menu #main_menu="matMenu">
+  <ng-container *ngFor="let mainItem of objectKeys(my_menu)">
+    <button mat-menu-item [matMenuTriggerFor]="sub_menu">{{ mainItem }}</button>
+    <mat-menu #sub_menu="matMenu">
+       <button *ngFor="let subItem of my_menu[mainItem]" mat-menu-item [disabled]="subItem.disabled" (click)="getAction(subItem.action)">{{ subItem.label }}=={{subItem.disabled}}</button>
+    </mat-menu>
+  </ng-container>
+</mat-menu>
+
+<button (click)="test1();">test=={{show}}</button>
+
+
+
+
+
+

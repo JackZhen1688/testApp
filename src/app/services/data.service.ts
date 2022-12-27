@@ -27,5 +27,12 @@ export class DataService {
   async getAsyncData():Promise<boolean> {
      return await this.http.get<boolean>(this.url+"/flag.json").toPromise();
   }
+
+  
+  postData(filter:string, frmValue: any): Observable<any>{
+    console.log("###### URL==="+filter)
+    return this.http.post(this.hostURL+"/tset/"+filter, frmValue);
+  } 
+
 }
 

@@ -1,0 +1,60 @@
+      <!-- Main Table -->
+      <table mat-table 
+      [dataSource]="dsFinancialHistory" multiTemplateDataRows
+      class="mat-elevation-z8" aria-describedby="">
+
+      <ng-container matColumnDef="createDt">
+      <th mat-header-cell *matHeaderCellDef scope="col">Cycle<br>&nbsp;Date</th>
+      <td mat-cell *matCellDef="let element"> {{element.createDt}} </td>
+      </ng-container>
+              
+      <ng-container matColumnDef="cycleControlId">
+      <th mat-header-cell *matHeaderCellDef scope="col">Cycle<br>&nbsp; &nbsp;Id</th>
+      <td mat-cell *matCellDef="let element"> {{element.cycleControlId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="img">
+        <th mat-header-cell *matHeaderCellDef style="width: 10px;" scope="col"></th>
+        <td mat-cell *matCellDef="let element">
+          <div *ngIf="expandedElement != element"><img width="13" height="9" src="assets/images/down-arrow.svg" alt=""></div>
+          <div *ngIf="expandedElement == element"><img width="13" height="9" src="assets/images/up-arrow.svg" alt=""></div>
+        </td>
+        </ng-container>
+
+      <!-- Expanded Content Column - 
+            The detail row is made up of this one column that spans across all columns -->
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+          <div class="element-detail" 
+                [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+
+            <div class="element-description">
+
+              <table mat-table [dataSource]="element.historySubList" class="mat-elevation-z8" aria-describedby="">
+
+                <ng-container matColumnDef="fiscalYearId">
+                    <th mat-header-cell style="background-color: #e7eff6;" *matHeaderCellDef scope="col">Fical Year</th>
+                    <td mat-cell *matCellDef="let element">{{element.fiscalYearId}}</td>
+                </ng-container>
+                
+                <ng-container matColumnDef="account">
+                    <th mat-header-cell style="background-color: #e7eff6;" *matHeaderCellDef scope="col">Account</th>
+                    <td mat-cell *matCellDef="let element">{{element.account}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displaySubcolumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displaySubcolumns;"></tr>
+              </table>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+          class="element-row"
+          [class.expanded-row]="expandedElement === element"
+          (click)="expandedElement = expandedElement === element ? null : element">
+      </tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+      </table>

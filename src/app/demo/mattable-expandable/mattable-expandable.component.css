@@ -1,0 +1,130 @@
+div.main-body {
+  height: 800px;
+  overflow: auto;
+}
+.full-width {
+  width: 100%;
+}
+.section-box {
+  font-size: 15px;
+  border: 1px solid #8EC3EB;
+  padding: 15px;
+  margin: 1px;
+  box-shadow: 1px 3px lightgrey;
+  background: white;
+}
+/* Tables Structure */
+table {
+   width: 95%;
+   font-size: 13px;
+ }
+div.table-overflow {
+  max-height: 500px; 
+  overflow: auto;
+ }
+ tr.detail-row {
+   height: 0;
+ }
+ 
+ tr.element-row:not(.expanded-row):hover {
+   background: lightgray;
+ }
+ 
+ tr.element-row:not(.expanded-row):active {
+   background: #efefef;
+ }
+ 
+ .element-row td {
+   border-bottom-width: 0;
+ }
+ 
+ .element-detail {
+   overflow: hidden;
+   display: flex;
+ }
+ 
+ .element-description {
+   padding: 16px;
+   width: 75%;
+   align-self: center;
+ }
+ 
+ .element-description-attribution {
+   opacity: 0.5;
+ }
+ 
+th.mat-header-cell {
+  background-color: #e7eff6;/*rgb(161, 204, 236);*/
+  text-align: left;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+tr.mat-header-row, .mat-row {
+  height: 30px; 
+}
+
+.btn-dot {
+  font-size: 13px;
+  background-color: rgb(254, 254, 254);
+  align-content: center;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  height: 25px;
+  padding-top: 2px;
+}
+
+.btn-customize {
+  font-size: 13px;
+  height: 25px;
+  /*line-height: 8px;*/
+  width: 65px;
+  align-content: center;
+  padding-top: 1px; 
+}
+
+.matfield-outline {
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  height: 25px;
+  padding-top: 3px;
+  padding-left: 3px;
+  padding-bottom: 1px;
+}
+
+.matfield-outline-search {
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  height: 25px;
+  padding-top: 3px;
+  padding-left: 3px;
+  padding-bottom: 1px;
+  width:98%;
+}
+
+.div-border {
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+}
+
+.div-paddingtop {
+  padding-top: 10px;
+}
+
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+.th-label {
+  font-size: 12px;
+  color: rgb(150, 148, 148);
+}
+
+.title-bar{
+  color: white;  
+  background-color:rgb(22, 60, 109)!important;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+}

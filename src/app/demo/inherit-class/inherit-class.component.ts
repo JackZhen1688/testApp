@@ -21,7 +21,7 @@ export class InheritClassComponent extends EditSliderComponent implements OnInit
   { 
     super(dataService, dialog);
     this.inheritForm = this.formBuilder.group({
-      'txtTest': this.formBuilder.control(''),
+      'txtTest': this.formBuilder.control('-1'),
     });
   }
 

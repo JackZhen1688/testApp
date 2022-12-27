@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-child',
@@ -7,6 +7,8 @@ import { FormBuilder, FormGroup} from '@angular/forms';
   styleUrls: ['./child.component.css']
 })
 export class ChildComponent implements OnInit {
+
+  @ViewChild('myForm') ngForm: NgForm;
 
   @Input() parentData: any;
   @Input() isEditable: boolean;
@@ -47,12 +49,15 @@ export class ChildComponent implements OnInit {
         console.log("value=="+changes.parentData.currentValue)
   }
 
-  // HTML <--(click)="appChild.passDataToParent()";
+  //HTML <--(click)="appChild.passDataToParent()";
   passDataToParent() {
     this.newDataEvent.emit(JSON.stringify(this.childForm.value));
   }
   
   onSubmit() {
 
+  }
+  onClickSubmit() {
+    console.log("value==="+JSON.stringify(this.ngForm.form.value));
   }
 }

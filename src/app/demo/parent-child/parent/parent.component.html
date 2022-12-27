@@ -11,7 +11,8 @@
                 <button type="button" (click)="passDataToChild();">Pass Data to Child</button>
             </div>
             <div class="col-sm-3">
-                <button type="button" (click)="appChild.passDataToParent();">Trigger Child Method</button>
+                <button type="button" (click)="appChild.passDataToParent();">Trigger Child passDataToParent</button>
+                <button type="button" (click)="appChild.onClickSubmit();">Trigger Child onClickSubmit</button>
             </div>
             <div class="col-sm-4">
                 <mat-slide-toggle matTooltip="Set slider to View/Edit mode" formControlName="txtEdit" [checked]="checked" (change)="onToggleEdit($event)">Edit</mat-slide-toggle>

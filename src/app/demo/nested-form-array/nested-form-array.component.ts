@@ -1,12 +1,68 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { MatAccordion } from '@angular/material/expansion';
+import { AfterViewChecked, ChangeDetectorRef } from '@angular/core'
 
+interface Pokemon {
+    value: string;
+    viewValue: string;
+  }
+  
+  interface PokemonGroup {
+    disabled?: boolean;
+    name: string;
+    pokemon: Pokemon[];
+  }
+
+  
 @Component({
   selector: 'app-nested-form-array',
   templateUrl: './nested-form-array.component.html',
   styleUrls: ['./nested-form-array.component.css']
 })
+
 export class NestedFormArrayComponent implements OnInit {
+  
+  pokemonGroups: PokemonGroup[] = [
+    {
+      name: 'Grass',
+      disabled: false,
+      pokemon: [
+        {value: 'bulbasaur-0', viewValue: 'Bulbasaur'},
+        {value: 'oddish-1', viewValue: 'Oddish'},
+        {value: 'bellsprout-2', viewValue: 'Bellsprout'},
+      ],
+    },
+    {
+      name: 'Water',
+      disabled: true,
+      pokemon: [
+        {value: 'squirtle-3', viewValue: 'Squirtle'},
+        {value: 'psyduck-4', viewValue: 'Psyduck'},
+        {value: 'horsea-5', viewValue: 'Horsea'},
+      ],
+    }
+  ]
+  pokemonGroups1: PokemonGroup[] = [
+    {
+      name: 'Grass',
+      disabled: false,
+      pokemon: [
+        {value: 'bulbasaur-0', viewValue: 'Bulbasaur'},
+        {value: 'oddish-1', viewValue: 'Oddish'},
+        {value: 'bellsprout-2', viewValue: 'Bellsprout'},
+      ],
+    },
+    {
+      name: 'Water',
+      disabled: true,
+      pokemon: [
+        {value: 'squirtle-3', viewValue: 'Squirtle'},
+        {value: 'psyduck-4', viewValue: 'Psyduck'},
+        {value: 'horsea-5', viewValue: 'Horsea'},
+      ],
+    }
+  ]
 
   public formDummyData = 
             {
@@ -17,7 +73,8 @@ export class NestedFormArrayComponent implements OnInit {
 
   public form: FormGroup;
 
-  constructor(private fb: FormBuilder) 
+  constructor(private fb: FormBuilder,
+              private readonly changeDetectorRef: ChangeDetectorRef) 
   {
       this.form = fb.group({
           'txtTest': [],         
@@ -39,6 +96,10 @@ export class NestedFormArrayComponent implements OnInit {
       }
   }
  
+  ngAfterViewChecked(): void {
+    this.changeDetectorRef.detectChanges();
+  }
+
   get users () {
     return this.form.get('users') as FormArray
   }
@@ -53,8 +114,7 @@ export class NestedFormArrayComponent implements OnInit {
          'phone': [phoneItem?phoneItem:''],
       });
       (<FormArray>(<FormGroup>(<FormArray>this.users)
-          .controls[userIndex]).controls['phones']).push(phone);
-  
+          .controls[userIndex]).controls['phones']).push(phone);   
   }
 
   delPhone(userIndex: number, index: number) 
@@ -64,6 +124,7 @@ export class NestedFormArrayComponent implements OnInit {
           .controls[userIndex]).controls['phones']).removeAt(index);
   }
 
+  addUserFlag: boolean = false;
   addUser(userItem?: any) 
   {
       const user = this.fb.group({ 
@@ -75,6 +136,7 @@ export class NestedFormArrayComponent implements OnInit {
       let userIndex = this.users.length-1;
       if (!userItem) {    //No Data:UserItem 
           this.addPhone(userIndex);
+          this.addUserFlag = true;
       } else {
           userItem.phones.forEach(phoneItem => {
               this.addPhone(userIndex, phoneItem);
@@ -98,6 +160,16 @@ export class NestedFormArrayComponent implements OnInit {
   ngOnDestroy(): void {
   }
 
+  togglePanel(index: number) {
+    console.log("index===="+index)
+  }
 
+  test() {
+      alert("hello")
+  }
 
+  activeClassIndex: number;
+  activeToggler(selectedIndex) {
+    this.activeClassIndex = (this.activeClassIndex == selectedIndex) ? null : selectedIndex;
+   }
 }

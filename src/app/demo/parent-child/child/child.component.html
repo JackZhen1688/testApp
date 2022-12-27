@@ -1,4 +1,4 @@
-    <form [formGroup]="childForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="childForm" #myForm="ngForm">
         <div class="row">
             <div class="col-sm-12"><p>Child works!</p></div>
         </div>
@@ -14,5 +14,6 @@
         <div>&nbsp;</div>
         <div>Data pass from Parent: {{parentData}}</div>
         <div>&nbsp;</div>
+        <button type="button" (click)="onClickSubmit();">onClickSubmit</button>
     </form>
 

@@ -11,7 +11,7 @@
       </div>
       <div class="row">
         <div class="col-6">Test Field:
-          <input matInput formControlName="txtTest" class="font-color" mask="separator.2" thousandSeparator="," decimalMarker="." [readonly]="!isEditable" >
+          <input matInput formControlName="txtTest" class="font-color" mask="separator.2" thousandSeparator="," decimalMarker="." [allowNegativeNumbers]="true" [readonly]="!isEditable" >
         </div>
         <div class="col-3"></div>
         <div class="col-3"></div>

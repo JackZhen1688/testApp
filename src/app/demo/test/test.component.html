@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="testForm">
+  <form [formGroup]="testForm" (ngSubmit)="onSubmit();">
       <div class="row">
         <div class="col-2"></div>
         <div class="col-8">
@@ -24,9 +24,9 @@
           <div>&nbsp;</div>
         </div>
         <div class="col-4">
-          <mat-form-field class="full-width no-underline">
+          <mat-form-field class="full-width">
             <div class="matfield-outline">
-              <input matInput formControlName="amount">
+              <input matInput formControlName="amount" mask="separator.2" thousandSeparator="," decimalMarker="." prefix="$">
             </div>
           </mat-form-field>  
           <div>&nbsp;</div>
@@ -99,13 +99,135 @@
       <div class="row">
           <div class="col-2"></div>
           <div class="col-8"> 
-            111
+           
+            <table mat-table [dataSource]='dsFundingDocs' class="mat-elevation-z8" matSort aria-describedby="">
+              <ng-container matColumnDef="userCaseId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">Case</th>
+                <td mat-cell *matCellDef="let element;">
+                  {{element.userCaseId}}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="userCaseLineNumberId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">Line</th>
+                <td mat-cell *matCellDef="let element;">
+                  {{element.userCaseLineNumberId}}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="popOver">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">Popover</th>
+                <td mat-cell *matCellDef="let element;">
+                  <table>
+                    <tr>
+                      <td width="80%">Notification Title</td>
+                      <td width="20%">
+                        <mde-popover #appPopover1="mdePopover" [mdePopoverOverlapTrigger]="false">
+                          <mat-card style="max-width: 300px">
+                            <mat-card-content>
+                              {{element.documentNumber}}
+                            </mat-card-content>
+                          </mat-card>
+                        </mde-popover>
+  
+                        <button mat-raised-button color="primary"
+                          [mdePopoverTriggerFor]="appPopover1"
+                           mdePopoverTriggerOn="click" #popoverTrigger="mdePopoverTrigger">
+                            Popover1
+                        </button>
+                      </td>
+                    </tr>
+                  </table>
+                  <div></div>
+                </td>
+              </ng-container>
+
+
+              <tr mat-header-row *matHeaderRowDef="displayColumnsFD; sticky: true"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayColumnsFD;"
+                  (click)="onRowClick(row)" [style.background]="row === selectedRow ? 'lightgrey' : ''">
+              </tr>
+            </table>
+
+
           </div>
           <div class="col-2"></div>    
       </div>
-  </form>
-</div>
+      <button type="submit" >Submit</button>
+      <p>&nbsp;</p>
+      <mat-form-field >
+        <mat-select formControlName="txtJobType">
+          <mat-option *ngFor="let client of clients" [value]="client.id" class="b">
+            {{client.clientName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
+      <mat-form-field floatLabel="never">
+        <div class="matfield-outline-extra">
+        <mat-select formControlName="txtOption" (selectionChange)="onChange();">
+          <mat-option value="A">Select Options</mat-option>
+          <mat-optgroup *ngFor="let group of optionGroups" [label]="group.name" [disabled]="group.disabled" >
+            <mat-option *ngFor="let option of group.options" [value]="option.value">
+              {{option.viewValue}}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
+        </div>
+      </mat-form-field> 
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+      <mat-form-field class="full-width" appearance="outline">
+        <input matInput [matDatepicker]="picker" formControlName="txtDate" (dateChange)="validDate(txtDate.value);">  
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-hint align="start" style="color: red;" *ngIf="txtDate.dirty || txtDate.touched">
+          <span *ngIf="txtDate.invalid">
+            invalid date
+          </span>
+        </mat-hint> 
+      </mat-form-field> 
+
+
+   </form>
+  <button type="button" (click)="doUnload();">New Tab</button>
+  <button type="button" (click)="clearForm();">Clear Form</button>
+
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+<button mat-raised-button color="primary"
+  [mdePopoverTriggerFor]="appPopover"
+  mdePopoverTriggerOn="click" #popoverTrigger="mdePopoverTrigger">
+  Show Popover
+</button>
+
+<mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+  <mat-card style="max-width: 300px">
+    <mat-card-content>
+    A material design popover component created using Angular version 8 with the Angular CDK.
+    </mat-card-content>
+  </mat-card>
+</mde-popover>
+
+
+
+<!--
+<button mat-raised-button color="primary"
+  [mdePopoverTriggerFor]="appPopover1"
+  mdePopoverTriggerOn="click" #popoverTrigger="mdePopoverTrigger">
+  Show Popover1
+</button>
+
+<mde-popover #appPopover1="mdePopover" [mdePopoverOverlapTrigger]="false">
+  <mat-card style="max-width: 300px">
+    <mat-card-content>
+    111 A material design popover component created using Angular version 8 with the Angular CDK.
+    </mat-card-content>
+  </mat-card>
+</mde-popover>
+-->
+
+
+</div>
 
   
   

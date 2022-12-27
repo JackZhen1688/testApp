@@ -18,9 +18,57 @@
   width:100%;
 }
 
+.matfield-outline-extra {
+  font-size: 14px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  height: 25px;
+  padding-top: 1px;
+  padding-left: 3px;
+  padding-bottom: 1px;
+  margin-top: -5px;
+  width:100%;
+}
+
 table td
 {
   width:500px;
 }
 
+.b {
+  display: inline-block;
+  width: 1000px;
+  background-color: yellow;
+}
+.mat-option {
+  height: 30px !important;
+  line-height: 30px !important;
+}
+.mat-optgroup {
+  /*display: block;*/
+  background-color: yellowgreen;
+}
 
+::ng-deep .mat-form-field-wrapper{
+  margin-bottom: -1.25em;
+  margin-top: -1.25em;
+
+}
+
+
+.mat-select-panel .mat-optgroup-label, .mat-select-panel .mat-option {
+  background-color: red;
+  height: 10px;
+}
+
+.select {
+  background-color: red;
+}
+/*
+::ng-deep .no-underline .mat-form-field-underline {
+  display: none;
+}*/
+
+.no-underline ::ng-deep .mat-form-field-underline {
+  display: none;
+}
